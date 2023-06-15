@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Kevin Rocha</title>
+    <title>MIRROR WORDS: A Coding Project By Kevin Rocha</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,8 +23,8 @@
 <!-- ==== Nav Section ==== -->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src = "img/img template.jpg" class = "d-inline-block align-text-top"
-             width = "30" height = "24"> APP NAME</a>
+        <a class="navbar-brand" href="#"><img src = "img/img template.png" class = "d-inline-block align-text-top"
+             width = "30" height = "24"> MIRROR WORDS</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -54,21 +54,90 @@
     <!-- ==== Main Section ==== -->
     <main class="flex-shrink-0">
         <div class = "contianer py-5 px-5 mt-5">
-           <h2 class = "border-1 border-bottom border-dark">The Code for APP NAME.</h2>
+           <h2 class = "border-1 border-bottom border-dark">The Code for MIRROR WORDS.</h2>
             <div class = "row row-cols-1 row-cols-lg-2">
                 <div class = "col-lg-8">
                      <pre class = "line-numbers"><code class = "language-javascript">
-                    // Call Hello World
-                    function helloWorld(){
-                    alert("Hello World");
-                    }
+                        //Get the string from the page
+//controller function
+function getValue(){
+
+    // make sure the alert is invisible
+    document.getElementById("alert").classList.add("invisible");
+
+
+    //get user string for the page
+    let userString = document.getElementById("userString").value;
+
+
+    // check for a palindrome
+    let returnObj = checkForPalindrome(userString);
+
+    // display out message to the screen
+    displayMessage(returnObj);
+
+}
+
+// check if string is a palindrome
+function checkForPalindrome(userString){
+
+    //taco cat
+    userString = userString.toLowerCase();
+
+    // remove spaces and special characters
+    let regex = /[^a-z0-9]/gi;
+    userString = userString.replace(regex, "");
+
+    let revString = [];
+    let returnObj = {};
+
+    for (let index = userString.length - 1; index >= 0; index--) {
+        revString += userString[index];
+        
+    }
+
+    if(userString.length <= 1){
+
+        returnObj.msg = "Please enter at least two characters."
+    }
+    else if(revString == userString){
+        returnObj.msg = "Well done! You entered a Palindrome!"
+
+    }
+    else{
+        returnObj.msg = "Sorry! You did not enter a palindrome!"
+    }
+
+    returnObj.reversed = revString;
+
+    return returnObj;
+
+}
+
+// display a message to the string
+function displayMessage(returnObj){
+
+    document.getElementById("alertHeader").innerHTML = returnObj.msg;
+    document.getElementById("msg").innerHTML = `Your phrase reversed is: ${returnObj.reversed} `;
+    document.getElementById("alert").classList.remove("invisible");
+}
                     </code>
                     </pre>
                 </div>
                 <div class = "col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello World </h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <p>The Code is structured in three functions.</p>
+                    <h5>getValue </h5>
+                    <p>getValue is a function that gets user input and passes it to the function checkForPalindrome to be able to verify
+                        if the function has a palindrome. From the result of that function, we pass the result of that to the displayMessage function.
+                    </p>
+                    <h5>checkForPalindrome </h5>
+                    <p>checkForPalindrome removes special characters and spaces to be able to accurately check if the user has inputted a palindrome. We reverse the 
+                        string and from that, we compare the original word to the reversed word and pass the message of saying it is or is not a palindrome to be the returned message.
+                    </p>
+                    <h5>displayMessage </h5>
+                    <p>displayMessage sets an alert message of that which is produced by the checkForPalindrome function. It then notifies the user for their reversed word and indicates whether their word was
+                        in fact a palindorm or not.
+                    </p>
                 </div>
             </div>
         </div>
@@ -78,17 +147,16 @@
         <div class="container-fluid">
             <div class = "row row-cols-1 row-cols-lg-3 gy-2">
                 <div class = "col order-last order-lg-first text-light">
-                    <div><span class="text-muted">&copy;2023</span> Kevin Rocha | kevinrocha3999@yahoo.com</div>
+                    <div><span class="text-muted">&copy;2023</span> Kevin Rocha | </div>
                 </div>
                 <div class = "col d-flex align-items-center justify-content-start justify-content-lg-center">
-                    <img src = "img/img template.jpg" alt = "Kevin Rocha Logo" height="24">
+                    <img src = "img/img template.png" alt = "Kevin Rocha Logo" height="24">
                 </div>
                 <div class = "col d-flex align items-center justify-content-start justify-content-lg-end">
                     <div class = "row">
-                        <div class = "col social"><a href ="#" target = "_blank"><i class = "fab fa-linkedin fa-2x"></i></a></div>
-                        <div class = "col social"><a href ="#" target = "_blank"><i class = "fab fa-github fa-2x"></i></a></div>                        
-                        <div class = "col social"><a href ="#" target = "_blank"><i class = "fab fa-twitter fa-2x"></i></a></div>  
-                        <div class = "col social"><a href ="#" target = "_blank"><i class = "fab fa-youtube fa-2x"></i></a></div>
+                        <div class = "col social"><a href ="https://www.linkedin.com/in/kevin-r-979806175/" target = "_blank"><i class = "fab fa-linkedin fa-2x"></i></a></div>
+                        <div class = "col social"><a href ="https://github.com/kevinarocha" target = "_blank"><i class = "fab fa-github fa-2x"></i></a></div>                        
+                        <div class = "col social"><a href ="https://twitter.com/kevinarocha11" target = "_blank"><i class = "fab fa-twitter fa-2x"></i></a></div> 
                 </div>
             </div>
         </div>
